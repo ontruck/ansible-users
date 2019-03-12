@@ -5,3 +5,6 @@
 
 - include: ssh_keys.yml
   when: users_list | length > 0
+
+- include: sudoers.yml
+  when: users_list | length > 0

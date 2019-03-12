@@ -1,0 +1,4 @@
+{{ ansible_managed }}
+{% for line in item.sudoers_lines %}
+{{ line }}
+{% endfor %} 
