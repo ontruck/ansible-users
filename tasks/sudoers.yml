@@ -1,0 +1,13 @@
+---
+
+- name: Add user to sudoers
+  template:
+    src: sudoers.j2
+    dest: "/etc/sudoers.d/{{ item.name }}"
+    owner: root
+    group: root
+    mode: 0440
+    validate: '/usr/sbin/visudo -cf %s'
+  when: item.sudoers_lines is defined
+  with_flattened:
+    - "{{ users_list }}"
