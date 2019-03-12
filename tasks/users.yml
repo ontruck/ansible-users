@@ -20,6 +20,7 @@
     non_unique: "{{ item.non_unique | default(omit) }}"
     group: "{{ item.group | default(item.name) }}"
     groups: "{{ ','.join(item.groups) | default(omit) }}"
+    append: "{{ item.append | default(omit) }}"
     state: "{{ item.state | default(omit) }}"
     comment: "{{ item.comment | default(omit) }}"
     password: "{{ item.password | default(omit) }}"
