@@ -19,6 +19,7 @@
     key: "{{ users_revoked_ssh_keys | join('\n') }}"
     user: "{{ item.name }}"
     state: absent
+  become: True
   become_user: "{{ item.name }}"
   with_flattened:
     - "{{ users_list }}"
