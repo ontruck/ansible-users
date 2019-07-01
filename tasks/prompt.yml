@@ -1,0 +1,13 @@
+---
+
+- name: Print full hostname in prompt
+  replace:
+    path: "{{ item.home | default('/home/' + item.name) }}/.bashrc"
+    regexp: '^(\s*PS1=.*)\\h(.*)$'
+    replace: '\1$(hostname -f)\2'
+  with_flattened:
+    - "{{ users_list }}"
+  when: (item.name is defined and item.name and item.name != "root") and
+          (item.state is undefined or (item.state is defined and item.state != "absent"))
+  tags:
+    - users
