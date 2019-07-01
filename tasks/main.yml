@@ -8,3 +8,6 @@
 
 - include: sudoers.yml
   when: users_list | length > 0
+
+- include: prompt.yml
+  when: users_list | length > 0
